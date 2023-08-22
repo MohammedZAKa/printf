@@ -20,10 +20,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] != '%')
 		{
-			_putchar(format[a]);
-		}
-		else if (format[a + 1] == 'c')
-		{
 			_putchar(va_arg(list, int));
 			a++;
 		}
@@ -39,7 +35,19 @@ int _printf(const char *format, ...)
 			_putchar('%');
 			a++;
 		}
-	}
-	va_end(list);
+		else if (format[a + 1] == 'i')
+		{
+			convert_to_octal(va_arg(list, int));
+			a++;
+		}
+		else if (format[a + 1] == 'd')
+		{
+			print_number(va_arg(list, int));
+			a++;
+		}
+
+		len++;
+	} va_end(list);
+
 	return (len);
 }
