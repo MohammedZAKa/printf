@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdarg.h>
+
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_string(char *str);
@@ -9,4 +11,5 @@ int get_num_size(int n);
 int find_digit(int num);
 int first_digit(int num);
 void convert_to_octal(int n);
+
 #endif
