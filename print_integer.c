@@ -124,12 +124,12 @@ int first_digit(int num)
 
 void convert_to_octal(int n)
 {
-	int size, j, num, i;
+	int size = find_digit(n) + 1;
+	int j, num, i;
+	int *oct = (int *)malloc(size * sizeof(int));
 
 	i = 0;
 	num = n;
-	size = find_digit(num);
-	int oct[size + 1];
 
 	while (num > 0)
 	{
