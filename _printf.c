@@ -1,48 +1,53 @@
 #include "main.h"
+
 /**
- * _printf - a function that prints anything
+ * _printf - handels the string and char
  *
- * @format: the format specifier
+ * @format: the format of the given input
  *
- * Return: the length of given chars
+ * Return: the number of chars
 */
+
 int _printf(const char *format, ...)
 {
-	unsigned int a = 0, len = 0;
+        unsigned int a = 0, len = 0;
 
-	va_list list;
-	va_start(list, format);
+        va_list list;
 
-	for ( ; format[a] != '\0' ; a++)
-	{
-		if (format[a] != '%')
-		{
-			_putchar(va_arg(list, int));
-			a++;
-		}
-		else if (format[a + 1] == 's')
-		{
-			int r_len = _putchar(*va_arg(list, char *));
+        va_start(list, format);
 
-			a++;
-			len += (r_len - 1);
-		}
-		else if (format[a + 1] == '%')
-		{
-			_putchar('%');
-			a++;
-		}
-		else if (format[a + 1] == 'i')
-		{
-			convert_to_octal(va_arg(list, int));
-			a++;
-		}
-		else if (format[a + 1] == 'd')
-		{
-			print_number(va_arg(list, int));
-			a++;
-		}
-		len++;
-	} va_end(list);
-	return (len);
+        for ( ; format[a] != '\0' ; a++)
+        {
+                if (format[a] != '%')
+                {
+                        _putchar(va_arg(list, int));
+                        a++;
+                }
+                else if (format[a + 1] == 's')
+                {
+                        int r_len = _putchar(*va_arg(list, char *));
+
+                        a++;
+                        len += (r_len - 1);
+                }
+                else if (format[a + 1] == '%')
+                {
+                        _putchar('%');
+                        a++;
+                }
+                else if (format[a + 1] == 'i')
+                {
+                        convert_to_octal(va_arg(list, int));
+                        a++;
+                }
+                else if (format[a + 1] == 'd')
+                {
+                        print_number(va_arg(list, int));
+                        a++;
+                }
+
+                len++;
+        } va_end(list);
+
+        return (len);
 }
